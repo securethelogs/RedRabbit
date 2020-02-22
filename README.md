@@ -1,8 +1,10 @@
 # RedRabbit
 
-![psbrutezip](https://ctrla1tdel.files.wordpress.com/2020/02/redrabbit.jpg)
+![psbrutezip](https://ctrla1tdel.files.wordpress.com/2020/02/redrabbit.gif)
 
 RedRabbit is a PowerShell script aimed at helping pentesters conduct ethical hacking #RedTeam
+
+Site: https://securethelogs.com/redrabbit-ps1/
 
 <b> To Run: </b>
 
