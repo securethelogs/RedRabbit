@@ -58,9 +58,9 @@ Given your method of choice, this will test if the machine can reach your destin
 
 Option 9: Show Local Firewall Deny Rules <br><br>
 This option will display the local firewall rules which have a deny action and format them in a handy table. 
-<br>
+<br><br>
 OSINT Options
-<br>
+<br><br>
 Option A: Find Subdomains <br><br>
 This option will allow you to search the internet for subdomains. 
 
