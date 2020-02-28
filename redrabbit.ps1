@@ -167,10 +167,13 @@ Write-Output ""
 
 
 
-    
-    $subnet = (Get-NetRoute -DestinationPrefix 0.0.0.0/0).NextHop
+    $subnet = (Get-NetRoute -DestinationPrefix 0.0.0.0/0).NextHop[1]
     $subnetrange = $subnet.Substring(0,$subnet.IndexOf('.') + 1 + $subnet.Substring($subnet.IndexOf('.') + 1).IndexOf('.') + 3)
 
+    $isdot = $subnetrange.EndsWith('.')
+
+    if ($isdot -like "False"){$subnetrange = $subnetrange + '.'}
+    
 $iprange = @(1..254)
 
 Write-Output ""
