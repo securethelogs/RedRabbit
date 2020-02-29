@@ -170,8 +170,8 @@ Write-Output ""
     $subnet = (Get-NetRoute -DestinationPrefix 0.0.0.0/0).NextHop
     $manyips = $subnet.Length
 
-    if($manyips -eq 1){$subnet = (Get-NetRoute -DestinationPrefix 0.0.0.0/0).NextHop[0]}
-    else{$subnet = (Get-NetRoute -DestinationPrefix 0.0.0.0/0).NextHop[1]}
+    if($manyips -eq 2){$subnet = (Get-NetRoute -DestinationPrefix 0.0.0.0/0).NextHop[1]}
+   
     
     
     $subnetrange = $subnet.Substring(0,$subnet.IndexOf('.') + 1 + $subnet.Substring($subnet.IndexOf('.') + 1).IndexOf('.') + 3)
