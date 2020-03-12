@@ -1114,7 +1114,7 @@ $arrayFromFile = @(Get-Content $tempfile)
 
 # Delete temp file
 
-Remove-Item –path $tempfile
+Remove-Item -path $tempfile
 
 
 Write-Output ""
