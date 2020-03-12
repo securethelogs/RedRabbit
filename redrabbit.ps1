@@ -1,4 +1,4 @@
-﻿$logo = @(
+$logo = @(
 '__________           ._____________       ___.  ___.   .__  __                \\\,_',
 '\______   \ ____   __| _/\______   \_____ \_ |__\_ |__ |__|/  |_               \` ,\ ',
 ' |       _// __ \ / __ |  |       _/\__  \ | __ \| __ \|  \   __\         __,.-" =__)',
@@ -16,7 +16,54 @@ $logo
    
 
     Write-Output "Current User: $who | Current Machine: $hostn"
+   
     
+    Write-Output ""
+
+
+    #Check Admin
+    
+
+$lcladminchk = ([Security.Principal.WindowsPrincipal] `
+  [Security.Principal.WindowsIdentity]::GetCurrent() `
+).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+
+if ($lcladminchk -eq "True"){
+
+$sessionadmin = "True!!"
+
+}else{
+
+$sessionadmin = "False"
+
+}
+
+$u = $env:UserName
+$d = (Get-WmiObject -Class Win32_ComputerSystem).Domain
+
+if ($d -eq "WORKGROUP"){$isdomadmin = "Computer In WORKGROUP, Cannot Query AD"}else{
+
+$a = net group "domain admins" /domain
+
+$isdadmin = select-string -pattern "$u" -InputObject $a
+
+if ($isdadmin -eq $null){$isdomadmin =  "False"}else{$isdomadmin = "True"}
+
+}
+
+Write-Output "Session Running As Admin: $sessionadmin   |  Is User Domain Admin: $isdomadmin"
+
+
+# Check Admin End
+
+
+#**
+
+while($true){
+
+
+
+    Write-Output ""
     Write-Output ""
 
     Write-Output "Please select one of the following:"
@@ -42,7 +89,8 @@ $logo
     Write-Output "Option C: Scan Azure Resource"
     Write-Output "Option D: Scan Socials For Usernames"
 
-    
+    Write-Output ""
+    Write-Output "Option Azure: Query Azure/AzureAD (beta)"
 
     Write-Output ""
     
@@ -51,6 +99,8 @@ $logo
 
 
     # ----------------- Quick Recon ----------------------------------
+
+    
 
     if ($option -eq "1"){
     
@@ -1433,3 +1483,180 @@ Write-Output "`n"
 
 
     }
+
+
+    # ------------- New Azure Option ---------
+
+    if ($option -eq "Azure"){
+    
+    
+$modaz = Get-InstalledModule az -ErrorAction SilentlyContinue
+$modazuread = Get-InstalledModule azuread -ErrorAction SilentlyContinue
+
+if ($modaz -eq $null){$modaz = "False"}else{$modaz = "True"}
+if ($modazuread -eq $null){$modazuread = "False"
+
+$modazuread = Get-InstalledModule AzureADPreview -ErrorAction SilentlyContinue
+
+if ($modazuread -eq $null){$modazuread = "False"}else{$modazuread = "True"}
+
+}else{$modazuread = "True"}
+
+
+Write-Output "Module Az Installed: $modaz"
+Write-Output "Module AzureAD Installed: $modazuread"
+Write-Output ""
+
+
+if ($modaz -eq "False" -or $modazuread -eq "False"){
+
+Write-Output "Cannot Run | Would you like to install the modules?"
+$intl = Read-Host -Prompt "Y/N"
+
+
+if ($intl -eq "y"){
+
+$admincheck = ([Security.Principal.WindowsPrincipal] `
+  [Security.Principal.WindowsIdentity]::GetCurrent() `
+).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+
+
+if ($admincheck = "True"){
+
+Install-Module az; Install-Module AzureAD
+
+}else{
+
+Write-Output "Admin Rights Are Required For Install  |  Run The Following As Admin: Install-Module az; Install-Module AzureAD"
+Start-Sleep -Seconds 2
+Exit
+
+
+}
+
+
+
+} # Installed or Not
+
+
+} # End of install option
+
+
+Write-Output "Starting Connection...You will need to login twice"
+Start-Sleep -Seconds 4
+
+try{Connect-AzAccount; Connect-AzureAD}catch{Write-Output "Cannot Connect To Azure......"} #>
+
+$azcontest = try{Get-AzResource}catch{<#fail#>}; if($azcontest -eq $null){$azcontest = "False"}else{$azcontest = "True"}
+$azureadcontest = try{Get-AzureADUser -Top 1}catch{<#fail#>}; if($azureadcontest -eq $null){$azureadcontest = "False"}else{$azureadcontest = "True"}
+
+
+
+
+# Start Of Azure Script
+
+$tenID = (Get-AzSubscription).TenantId | Get-Unique
+
+Write-Output ""
+
+$logo
+
+Write-Output " Azure Commands (Beta)"
+
+Write-Output "Connected To Azure: $azcontest  |  Connected To AzureAD: $azureadcontest"
+Write-Output ""
+Write-Output "Connected To TenantID: $tenID"
+
+
+Write-Output ""
+
+
+# Options
+
+while ($true){
+
+Write-Output "Please select one of the following:"
+Write-Output ""
+
+    Write-Output "AzureAD Commands"
+
+    Write-Output "Option 1: Search AzAD User"
+    Write-Output "Option 1: Search AzAD Groups"
+    Write-Output "Option 2: Search AzAD Roles"
+    Write-Output "Option 4: Show Domains"
+    Write-Output "Option 5: List First 5000 Users (Grid View)"
+    
+
+
+
+
+    Write-Output "" #Split
+
+
+
+    
+    Write-Output "Azure Infra Commands"
+
+    Write-Output "Option A: List All Azure Resource Groups"
+    Write-Output "Option B: List All Resource Within A Resource Group"
+    Write-Output "Option C: List All Resource Locks"
+    Write-Output "Option D: List Public IPs"
+    
+    
+    
+#} # End Options
+
+Write-Output ""
+
+$opt = Read-Host -Prompt "Option"
+
+
+If($opt -eq "1"){
+
+$u = Read-Host -Prompt ""
+
+
+
+}
+
+
+
+If($opt -eq "3"){
+
+ (Get-AzureADDirectoryRole).displayname
+    Write-Output ""
+    $l = Read-Host -Prompt "What Role To Query"
+
+    try{
+    $a = Get-AzureADDirectoryRole | Where-Object {$_.displayName -like "$l"}; Get-AzureADDirectoryRoleMember -ObjectId $a.ObjectId | Format-Table DisplayName,UserPrincipalName,ObjectId}catch{
+    Write-Output "Incorrect entry"
+    }
+
+}
+
+
+
+
+If($opt -eq "4"){Get-AzureADDomain | Format-Table Name,AuthenticationType}
+
+If($opt -eq "5"){Get-AzureADUser -Top 5000 | Out-GridView}
+
+
+
+
+If($opt -eq "a"){Get-AzResourceGroup | Format-Table ResourceGroupName,Location,Tags}
+If($opt -eq "b"){$i = Read-Host -Prompt "Resource Group Name"; Get-AzResource | Where-Object {$_.ResourceGroupName -like "*$i*"} | Format-Table Location,Name,ResourceType}
+If($opt -eq "c"){Get-AzResourceLock |Format-Table Name, ResourceName, ResourceGroupName, Properties}
+If($opt -eq "D"){Get-AzPublicIpAddress | Format-Table Name,Location,ResourceGroupName,IpAddress,Id}
+
+
+}
+
+
+
+    
+    
+    } # New Azure Option
+
+
+   } # End While
