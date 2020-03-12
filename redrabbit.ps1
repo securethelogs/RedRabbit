@@ -1659,4 +1659,5 @@ If($opt -eq "D"){Get-AzPublicIpAddress | Format-Table Name,Location,ResourceGrou
     } # New Azure Option
 
 
-   } # End While
+   }
+   }# End While
