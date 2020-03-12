@@ -4,12 +4,19 @@
 
 RedRabbit is a PowerShell script aimed at helping pentesters conduct ethical hacking #RedTeam
 
-<b> To Run: </b>
+## To Run
 
 You can either run locally by downloading the script or run remotely using: 
 
 powershell –nop –c “iex(New-Object Net.WebClient).DownloadString(‘https://raw.githubusercontent.com/securethelogs/RedRabbit/master/redrabbit.ps1’)”
 
-<b> Help </b>
+<b>If you run remotely, you will always get the latest version</b>
+
+## Help
 
 Option info and help can be found here: https://securethelogs.com/redrabbit-ps1/
+
+## Recent Update
+
+- RedRabbit now checks for admin session and trys to query AD to check if Domain Admin.
+- Azure Feature has now been added! This is in Beta as of 12/03/2020. 
