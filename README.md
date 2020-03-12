@@ -2,7 +2,10 @@
 
 ![psbrutezip](https://ctrla1tdel.files.wordpress.com/2020/02/redrabbit.gif)
 
-RedRabbit is a PowerShell script aimed at helping pentesters conduct ethical hacking #RedTeam
+## About
+
+RedRabbit is a PowerShell script aimed at helping pentesters conduct ethical hacking #RedTeam. 
+The aim is to highlight just how Powerful PowerShell is and how it can be used against you (Ethically).
 
 ## To Run
 
