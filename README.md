@@ -1,6 +1,6 @@
 # RedRabbit
 
-![psbrutezip](https://ctrla1tdel.files.wordpress.com/2020/03/v2.gif)
+![RedRabbit](https://ctrla1tdel.files.wordpress.com/2020/03/v3.gif)
 
 ## About
 
@@ -22,4 +22,10 @@ Option info and help can be found here: https://securethelogs.com/redrabbit-ps1/
 ## Recent Update
 
 - RedRabbit now checks for admin session and trys to query AD to check if Domain Admin.
-- Azure Feature has now been added! This is in Beta as of 12/03/2020. 
+- Password extraction (SAM/SYSTEM File, Credential Manager and Wireless Profiles)
+- Encode Commands
+- Run Encoded Commands
+
+- Azure Feature has now been added! 
+
+![preview](https://ctrla1tdel.files.wordpress.com/2020/03/azure.gif)
