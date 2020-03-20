@@ -21,7 +21,7 @@ Option info and help can be found here: https://securethelogs.com/redrabbit-ps1/
 
 ## Recent Update
 
-- RedRabbit now checks for admin session and trys to query AD to check if Domain Admin.
+- RedRabbit now checks for admin session and tries to query AD to check if Domain Admin.
 - Password extraction (SAM/SYSTEM File, Credential Manager and Wireless Profiles)
 - Encode Commands
 - Run Encoded Commands
