@@ -247,7 +247,7 @@ $islive = test-connection $currentip -Quiet -Count 1
 
 if ($islive -eq "True"){
 
-$dnstest = (Resolve-DnsName $currentip).NameHost
+try{$dnstest = (Resolve-DnsName $currentip -ErrorAction SilentlyContinue).NameHost}catch{}
 
 if ($dnstest -like "*.home") {
 
@@ -267,7 +267,7 @@ Write-Output "Host is Reachable: $currentIP  |   DNS: $dnstest"
     foreach ($p in $portstoscan){
 
     $TCPObject = new-Object system.Net.Sockets.TcpClient
-    $result = $TCPObject.ConnectAsync($currentip,$p).Wait($waittime)
+    try{$result = $TCPObject.ConnectAsync($currentip,$p).Wait($waittime)}catch{}
 
     if ($result -eq "True"){
     
