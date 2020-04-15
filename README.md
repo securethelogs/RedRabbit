@@ -1,6 +1,6 @@
 # RedRabbit
 
-![RedRabbit](https://ctrla1tdel.files.wordpress.com/2020/03/v2.2.gif)
+![RedRabbit](https://ctrla1tdel.files.wordpress.com/2020/04/ynn227rigk.gif)
 
 ## About
 
@@ -21,6 +21,8 @@ Option info and help can be found here: https://securethelogs.com/redrabbit-ps1/
 
 ## Recent Update
 
+- Web Crawler
+- File Crawler
 - Edit Local Host For SMB Relay (Redirect share to attacker IP)
 - Probe For SMB Shares
 - RedRabbit now checks for admin session and tries to query AD to check if Domain Admin.
