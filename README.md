@@ -21,14 +21,19 @@ Option info and help can be found here: https://securethelogs.com/redrabbit-ps1/
 
 ## Recent Update
 
+Fixed:
+
+ - Brute Forcing Zips now ends once password cracked.
+ - Clipboard Logger, better explanation 
+
+Features:
+
 - Web Crawler
 - File Crawler
 - Edit Local Host For SMB Relay (Redirect share to attacker IP)
 - Probe For SMB Shares
 - RedRabbit now checks for admin session and tries to query AD to check if Domain Admin.
 - Password extraction (SAM/SYSTEM File, Credential Manager and Wireless Profiles)
-- Encode Commands
-- Run Encoded Commands
 
 - Azure Feature has now been added! 
 
