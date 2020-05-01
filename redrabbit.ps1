@@ -220,7 +220,7 @@ Write-Output "-------------------"
 Write-Output ""
 
 
-$Publicip = (curl http://ipinfo.io/ip).content
+$Publicip = (curl http://ipinfo.io/ip -UseBasicParsing).content
 $internetcheckgoogle = (Test-NetConnection google.com -Port 443).TcpTestSucceeded
 $internetcheckseclogs = (Test-NetConnection securethelogs.com -Port 443).TcpTestSucceeded
 $internetcheckMicro = (Test-NetConnection Microsoft.com -Port 443).TcpTestSucceeded
@@ -1340,7 +1340,7 @@ foreach ($i in $wordlist){
 $crawlurl = $url + $i
 $f = $false
 
-try{$crawl = Invoke-WebRequest $crawlurl}catch{
+try{$crawl = Invoke-WebRequest $crawlurl -UseBasicParsing}catch{
 $f = $true
 if ($sf -eq "y"){Write-Output "$crawlurl : failed"}else{}}
 
@@ -1538,8 +1538,8 @@ Write-Output ""
 
 # Scan Sites 
 
-$virustotal = (curl https://www.virustotal.com/ui/domains/$domain/subdomains).content >> $tempfile 
-$crt = (curl https://crt.sh/?q=%25.$domain).content >> $tempfile 
+$virustotal = (curl https://www.virustotal.com/ui/domains/$domain/subdomains -UseBasicParsing).content >> $tempfile 
+$crt = (curl https://crt.sh/?q=%25.$domain -UseBasicParsing).content >> $tempfile 
 
 
 $arrayFromFile = @(Get-Content $tempfile)
@@ -1644,7 +1644,7 @@ Write-Output ""
 
 
 
-$pastes = @(curl https://pastebin.com/archive).links
+$pastes = @(curl https://pastebin.com/archive -UseBasicParsing).links
 
 
 
@@ -1670,7 +1670,7 @@ Write-Output "Name: $name"
 Write-Output "Link: https://pastebin.com/raw$link"
 
 
-$contenturl = @((curl https://pastebin.com/raw$link).content) | Out-String
+$contenturl = @((curl https://pastebin.com/raw$link -UseBasicParsing).content) | Out-String
 
 $getlenght = $contenturl.Length
 
@@ -1882,7 +1882,7 @@ try
 
 {
 
-    $response = Invoke-WebRequest -Uri "$i" -ErrorAction Stop
+    $response = Invoke-WebRequest -Uri "$i" -UseBasicParsing -ErrorAction Stop
     $StatusCode = $Response.StatusCode
 }
 catch
