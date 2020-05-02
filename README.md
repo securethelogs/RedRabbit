@@ -19,6 +19,9 @@ powershell –nop –c “iex(New-Object Net.WebClient).DownloadString(‘https:
 
 Option info and help can be found here: https://securethelogs.com/redrabbit-ps1/
 
+YouTube: https://youtu.be/9kXi2aqfb2M
+
+
 ## Recent Update
 
 Fixed:
