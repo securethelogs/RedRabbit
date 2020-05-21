@@ -1,6 +1,6 @@
 # RedRabbit
 
-![RedRabbit](https://ctrla1tdel.files.wordpress.com/2020/04/ynn227rigk.gif)
+![RedRabbit](https://ctrla1tdel.files.wordpress.com/2020/05/redrabbitv5.gif)
 
 ## About
 
@@ -26,18 +26,14 @@ YouTube: https://youtu.be/9kXi2aqfb2M
 
 Fixed:
 
- - Brute Forcing Zips now ends once password cracked.
- - Clipboard Logger, better explanation 
+- Loop issue with BruteForce Zip
+- Performance for "Quick recon"
 
-Features:
+Feature Update v5:
 
-- Web Crawler
-- File Crawler
-- Edit Local Host For SMB Relay (Redirect share to attacker IP)
-- Probe For SMB Shares
-- RedRabbit now checks for admin session and tries to query AD to check if Domain Admin.
-- Password extraction (SAM/SYSTEM File, Credential Manager and Wireless Profiles)
+- Quick Recon - Shows Local FW Blocks only to increase speed
+- Reverse Shell - Netcat shell
+- Flood - Create a session that generates mass logs whilst you "work" (Masking)
+- PassVol - https://github.com/securethelogs/PassVol
+- KeyLogger - https://github.com/securethelogs/keylogger
 
-- Azure Feature has now been added! 
-
-![preview](https://ctrla1tdel.files.wordpress.com/2020/03/azure.gif)
