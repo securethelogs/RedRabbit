@@ -1753,7 +1753,7 @@ $dnsfound
 
 # ----------------- CRT Checking ------------------------
 
-$test = $i.Contains("mundipharma.com<B")
+$test = $i.Contains("")
 
 if ($test -eq "True"){
 
