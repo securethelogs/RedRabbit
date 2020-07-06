@@ -11,29 +11,18 @@ The aim is to highlight just how Powerful PowerShell is and how it can be used a
 
 You can either run locally by downloading the script or run remotely using: 
 
-powershell –nop –c “iex(New-Object Net.WebClient).DownloadString(‘https://raw.githubusercontent.com/securethelogs/RedRabbit/master/redrabbit.ps1’)”
+powershell –nop –c “iex(New-Object Net.WebClient).DownloadString(‘https://raw.githubusercontent.com/securethelogs/RedRabbit/master/RedRabbit.ps1’)”
 
 <b>If you run remotely, you will always get the latest version</b>
 
 ## Help
 
-Option info and help can be found here: https://securethelogs.com/redrabbit-ps1/
-
-YouTube: https://youtu.be/9kXi2aqfb2M
-
+Enter "H" or "Help" to show all options. 
 
 ## Recent Update
 
-Fixed:
+Redesign and restructure
 
-- Loop issue with BruteForce Zip
-- Performance for "Quick recon"
+The older version has been moved to "\RedRabbit v5" 
 
-Feature Update v5:
-
-- Quick Recon - Shows Local FW Blocks only to increase speed
-- Reverse Shell - Netcat shell
-- Flood - Create a session that generates mass logs whilst you "work" (Masking)
-- PassVol - https://github.com/securethelogs/PassVol
-- KeyLogger - https://github.com/securethelogs/keylogger
 
