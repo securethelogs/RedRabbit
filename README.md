@@ -1,6 +1,6 @@
 # RedRabbit
 
-![RedRabbit](https://ctrla1tdel.files.wordpress.com/2020/05/redrabbitv5.gif)
+![RedRabbit](https://ctrla1tdel.files.wordpress.com/2020/07/redrabbit-new.gif)
 
 ## About
 
