@@ -21,7 +21,11 @@ Enter "H" or "Help" to show all options.
 
 ## Recent Update
 
-Redesign and restructure
+Option 20: Find SPNs with AD Module
+Option 21: Network Pulse (Find nearby devices)
+Option 22: LDAP AD Scan (Find accounts and devices of interest)
+Option 23: BAD LAPs (Find LAPS Passwords within AD)
+
 
 The older version has been moved to "\RedRabbit v5" 
 
