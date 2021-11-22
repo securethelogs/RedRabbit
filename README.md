@@ -11,7 +11,7 @@ The aim is to highlight just how Powerful PowerShell is and how it can be used a
 
 You can either run locally by downloading the script or run remotely using: 
 
-powershell –nop –c “iex(New-Object Net.WebClient).DownloadString(‘https://raw.githubusercontent.com/securethelogs/RedRabbit/master/RedRabbit.ps1’)”
+powershell –nop –c "IEX(New-Object Net.WebClient).downloadString('https://raw.githubusercontent.com/securethelogs/RedRabbit/master/RedRabbit.ps1')"
 
 <b>If you run remotely, you will always get the latest version</b>
 
