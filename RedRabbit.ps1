@@ -124,8 +124,9 @@ if ($option -eq "exit"){ exit }
     Option 22: LDAP AD Scan
 
 
+                            -----------------* Browsers *----------------
 
-                            
+    Option br-1: Show History
                            
     ')
 
@@ -2970,8 +2971,55 @@ if ($option -eq "az2"){
 
 
 
+if ($option -eq "br-1"){
+    Write-Host " [*] Running Histories "
 
+    
+    function showHistory {
+        Param(
+            [Parameter(HelpMessage='user:')]
+            [Alias('u')]
+            [string]$user,
 
+            [Parameter(HelpMessage='browser:')]
+            [Alias('b')]
+            [string]$browser
+        )
+
+        $UserName = $env:USERNAME
+
+        $Path = "$Env:systemdrive\Users\$UserName\AppData\Local\Google\Chrome\User Data\Default\History" 
+            if (-not (Test-Path -Path $Path)) { 
+                Write-Verbose "[!] Could not find Chrome History for username: $UserName" 
+            } 
+
+        $Regex = '(htt(p|s))://([\w-]+\.)+[\w-]+(/[\w- ./?%&=]*)*?' 
+
+        $viewBrowser = ""
+        switch ($browser) {
+            "chrome" {$viewBrowser = "Google\Chrome"}
+            "brave" {$viewBrowser = "BraveSoftware\Brave-Browser"}
+            default {$viewBrowser = "Google\Chrome"}
+        }
+
+        $Value = Get-Content -Path "$Env:systemdrive\Users\$UserName\AppData\Local\$viewBrowser\User Data\Default\History"|Select-String -AllMatches $regex |% {($_.Matches).Value} |Sort -Unique 
+
+        $e = $Value | ForEach-Object { 
+            $Key = $_ 
+            if ($Key -match $Search){ 
+                New-Object -TypeName PSObject -Property @{ 
+                    User = $UserName 
+                    Browser = $viewBrowser 
+                    DataType = 'History' 
+                    Data = $_ 
+                } 
+            } 
+        } | Format-Table | Out-String | Write-Host
+
+    }
+
+    showHistory
+}
 
 
   
@@ -2988,3 +3036,17 @@ if ($option -eq "az2"){
 1133725
 8507704
 7893036
+8751196
+1652131
+5215174
+9946835
+9768476
+5575311
+5986222
+6593441
+5873916
+1633645
+282550
+6487082
+2937528
+2951710
